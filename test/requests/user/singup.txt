@@ -1,0 +1,7 @@
+POST http://localhost:5000/user/singup
+content-type: application/json
+
+{
+    "username": "test1",
+    "password": "123123"
+}
