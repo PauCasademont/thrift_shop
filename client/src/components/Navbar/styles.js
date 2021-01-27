@@ -12,7 +12,7 @@ export default makeStyles((theme) => ({
         backgroundColor: '#D5F5E3',
     },
     image: {
-        height: '60px',
+        height: '55px',
         width: '200px'
     },
     formControl: {      
@@ -22,6 +22,6 @@ export default makeStyles((theme) => ({
     avatar: {        
         backgroundColor: '#FC711C',
         width: '50px',
-        height: '50px',
+        height: '50px'
     }
 }));
