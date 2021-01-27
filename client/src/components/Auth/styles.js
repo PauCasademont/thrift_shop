@@ -7,4 +7,7 @@ export default makeStyles((theme) => ({
         paddingLeft: theme.spacing(10),
         paddingRight: theme.spacing(10),
     },
+    button: {
+        marginTop: theme.spacing(5),        
+    }
 }));
