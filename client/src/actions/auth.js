@@ -2,14 +2,14 @@ import swal from 'sweetalert';
 
 import * as api from '../api/index.js';
 
-const createAlert = (title, text, icon, button) => {
+const createAlert = (title, text, icon="error", button="ok") => {
     swal({ title, text, icon, button });
 }
 
 export const signUp = async (form, router) => {
 
     if (form.password !== form.password2){
-        createAlert("Error", "Passwords do not match", "error", "ok");      
+        createAlert("Error", "Passwords do not match");      
     }
 
     else {
@@ -19,7 +19,7 @@ export const signUp = async (form, router) => {
         } catch (error) {
             console.log(error);
             const message = error.response.data.message || "Something went wrong";
-            createAlert("Error", message, "error", "ok"); 
+            createAlert("Error", message); 
         }
     }
 }; 
