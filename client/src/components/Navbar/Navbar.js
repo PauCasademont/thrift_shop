@@ -30,13 +30,13 @@ function Navbar({ setRegistering }) {
         setAnchorEl(null);
     }
 
-    const handleSingInClick = () => {
+    const handleSignInClick = () => {
         handleCloseMenu();
         setRegistering(false);
         router.push('/auth');
     }
 
-    const handleSingUpClick = () => {
+    const handleSignUpClick = () => {
         handleCloseMenu();
         setRegistering(true);
         router.push('/auth');
@@ -60,8 +60,8 @@ function Navbar({ setRegistering }) {
                 <Avatar  className={classes.avatar} /> 
             </IconButton>
             <Menu id="userMenu" keepMounted anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseMenu}>
-                <MenuItem onClick={handleSingInClick}>Sing In</MenuItem>
-                <MenuItem onClick={handleSingUpClick}>Sing Up</MenuItem>
+                <MenuItem onClick={handleSignInClick}>Sign In</MenuItem>
+                <MenuItem onClick={handleSignUpClick}>Sign Up</MenuItem>
             </Menu>
         </AppBar>
     )
