@@ -17,7 +17,7 @@ export default makeStyles((theme) => ({
     },
     formControl: {      
         width: '25%',
-        marginLeft: '-200px'
+        marginLeft: '-70px'
     },
     avatar: {        
         backgroundColor: '#FC711C',

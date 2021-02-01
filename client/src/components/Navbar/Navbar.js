@@ -8,7 +8,7 @@ import * as prodCat from '../../constants/productCategories';
 
 const categories = [prodCat.ALL_PRODUCTS, prodCat.SPORT, prodCat.TECHNOLOGY, prodCat.CLOTHES];
 
-function Navbar() {    
+function Navbar({ setRegistering }) {    
     const [currentCategory, setCurrentCategory] = useState('');
     const [anchorEl, setAnchorEl] = useState(null);
     const classes = useStyles();
@@ -31,23 +31,27 @@ function Navbar() {
     }
 
     const handleSingInClick = () => {
+        handleCloseMenu();
+        setRegistering(false);
         router.push('/auth');
     }
 
     const handleSingUpClick = () => {
+        handleCloseMenu();
+        setRegistering(true);
         router.push('/auth');
     }
 
     return (
-        <AppBar className={classes.appBar} position="static" color="inherit" >
+        <AppBar className={classes.appBar} position="static" >
             <IconButton color="inherit" onClick={handleHomeClick}>
-                <img className={classes.image} src={logo} alt="icon" height="50" />
+                <img className={classes.image} src={logo} alt="logo" />
             </IconButton>
             <FormControl className={classes.formControl} >       
                 <InputLabel id="selectInputLabel">Category</InputLabel>         
                 <Select  labelId="selectInputLabel" value={currentCategory} onChange={handleSelectChange} >
-                    {categories.map((category) => (
-                        <MenuItem value={category}>{category}</MenuItem>
+                    {categories.map((category, index) => (
+                        <MenuItem key={index} value={category}>{category}</MenuItem>
                     ))}                   
                 </Select>
                 <FormHelperText>What are you looking for?</FormHelperText>

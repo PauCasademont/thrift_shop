@@ -7,7 +7,10 @@ export default makeStyles((theme) => ({
         paddingLeft: theme.spacing(10),
         paddingRight: theme.spacing(10),
     },
-    button: {
+    button_submit: {
         marginTop: theme.spacing(5),        
+    },
+    button_switchMode: {
+        marginTop: theme.spacing(3), 
     }
 }));

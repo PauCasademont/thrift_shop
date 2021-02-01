@@ -1,8 +1,8 @@
 import React from 'react';
 
-function Home() {
+function Home({user}) {
     return (
-        null
+        <h1>{user ? user.username : 'name'}</h1>
     )
 }
 

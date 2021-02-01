@@ -2,4 +2,5 @@ import axios from 'axios';
 
 const url = 'http://localhost:5000'
 
-export const req_singUp = (form) => axios.post(`${url}/user/singup`, form);
+export const req_signUp = (form) => axios.post(`${url}/user/signup`, form);
+export const req_signIn = (form) => axios.post(`${url}/user/signin`, form);
