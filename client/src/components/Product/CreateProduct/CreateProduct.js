@@ -1,25 +1,30 @@
 import React, { useState } from 'react'
 import { Container, Paper, Grid, TextField, Button } from '@material-ui/core';
 import FileBase from 'react-file-base64';
+import { useHistory } from 'react-router-dom';
+import NumberFormat from 'react-number-format';
 
+import { uploadProduct } from '../../../actions/product';
 import useStyles from './styles';
 
-const initialState = { title: '', description: '', price: 0, image: '', owner: ''}
+const initialState = { title: '', description: '', price: 0, image: ''}
 
-function CreateProduct() {
+function CreateProduct({ user }) {
     const [form, setForm] = useState(initialState);
     const classes = useStyles();
+    const router = useHistory();
 
-    const handleSubmit = () => {
-
+    const handleSubmit = (e) => {
+        e.preventDefault(); 
+        uploadProduct(form, user, router);
     }
 
-    const handleChange = () => {
-
-    }
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });        
+    };
 
     const handleSetFile = ({ base64 }) => {
-        console.log('File:', base64);
+        setForm({...form, image: base64 })
     }
 
     return (
@@ -48,21 +53,25 @@ function CreateProduct() {
                                 type="text"
                             />
                         </Grid>
-                        <Grid item xs={12}>
-                            <TextField
+                        <Grid item xs={12}>                           
+                            <NumberFormat
+                                className={classes.number_format}
                                 name="price"
-                                onChange={handleChange}
                                 value={form.price}
-                                required fullWidth
-                                label="Price"
-                                type="number"
+                                onChange={handleChange}
+                                thousandSeparator
+                                suffix=" €"
+                                isNumericString
+                                allowNegative={false}
+                                decimalScale={2}
+                                fixedDecimalScale={true}
                             />
                         </Grid>
                     </Grid>
                     <Grid container spacing={5} direction="column" alignItems="center"  justify="center">
                         <Grid item xs={12}>
-                            <div className={classes.filebase}>
-                                <FileBase className={classes.filebase} type="file" multiple={false} onDone={handleSetFile}/>
+                            <div className={classes.file_base}>
+                                <FileBase type="file" multiple={false} onDone={handleSetFile}/>
                             </div>
                         </Grid>
                         <Grid item xs={12}>

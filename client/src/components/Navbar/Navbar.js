@@ -75,7 +75,7 @@ function Navbar({ setRegistering, user, setUser }) {
                 <FormHelperText>What are you looking for?</FormHelperText>
             </FormControl>
             <IconButton color="inherit" aeia-controls="userMenu" aria-haspopup="true" onClick={handleUserMenuClick}>
-                <Avatar  className={classes.avatar} /> 
+                <Avatar  className={classes.avatar} >{user?.username.charAt(0).toUpperCase()}</Avatar> 
             </IconButton>
             <Menu id="userMenu" keepMounted anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseMenu}>
                 { !user && <MenuItem onClick={handleSignInClick}>Sign In</MenuItem>}             
