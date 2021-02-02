@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({limit: '30mb', extended: true }))
 app.use(cors());
 
 app.use('/user', userRoutes);
-app.use('/product', productRoutes);
+app.use('/products', productRoutes);
 
 const CONNECTION_URL = process.env.CONNECTION_URL;
 const PORT = process.env.PORT || 5000;

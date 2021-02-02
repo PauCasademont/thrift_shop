@@ -14,3 +14,13 @@ export const createProduct = async (req, res) => {
         console.log(error);
     }
 }
+
+export const getProducts = async (req, res) => {
+    try {
+        const products = await ProductModel.find();
+        res.status(200).json(products);
+    } catch(error) {
+        res.status(404).json({ message: "Something went wrong"});
+        console.log(error);
+    }
+}

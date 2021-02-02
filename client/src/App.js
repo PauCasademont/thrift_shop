@@ -23,7 +23,7 @@ function App() {
           <Route 
             path="/" exact 
             render={() =>
-              <Home user={user} /> 
+              <Home /> 
               }
           />
           <Route 

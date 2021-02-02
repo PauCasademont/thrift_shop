@@ -50,9 +50,12 @@ function Navbar({ setRegistering, user, setUser }) {
             icon: "info", 
             buttons: ["Cancel", "Continue"] 
         }).then(accepted => {
-            if(accepted) setUser(null);
+            if(accepted) {
+                setUser(null);
+                router.push('/');
+            }
         });
-        handleCloseMenu();
+        handleCloseMenu();       
     }
 
     const handleAddProductClick = () => {
