@@ -5,6 +5,7 @@ import {BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
 import NavBar from './components/Navbar/Navbar';
+import CreateProduct from './components/Product/CreateProduct/CreateProduct';
  
 function App() {
   const [registering, setRegistering] = useState(false);
@@ -33,6 +34,13 @@ function App() {
                 setRegistering={setRegistering}
                 setUser={setUser} 
               /> } 
+          />
+          <Route
+            path="/upload" exact
+            render={() =>
+              <CreateProduct
+                user={user}
+              /> }
           />
         </Switch>
       </Container>
