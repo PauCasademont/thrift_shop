@@ -8,12 +8,16 @@ import NavBar from './components/Navbar/Navbar';
  
 function App() {
   const [registering, setRegistering] = useState(false);
-  const [user, setUser] = useState({ id: '', username: 'name'});
+  const [user, setUser] = useState(null);
 
   return (
     <BrowserRouter>
       <Container maxWidth="lg">
-        <NavBar setRegistering={setRegistering} />
+        <NavBar 
+          setRegistering={setRegistering} 
+          user={user} 
+          setUser={setUser} 
+        />
         <Switch>          
           <Route 
             path="/" exact 

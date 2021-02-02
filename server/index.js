@@ -5,6 +5,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 import userRoutes from './routes/user.js';
+import productRoutes from './routes/product.js'
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({limit: '30mb', extended: true }))
 app.use(cors());
 
 app.use('/user', userRoutes);
+app.use('/product', productRoutes);
 
 const CONNECTION_URL = process.env.CONNECTION_URL;
 const PORT = process.env.PORT || 5000;

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
+import swal from 'sweetalert';
 import { AppBar, FormControl, InputLabel, Select, MenuItem, FormHelperText, Avatar, Menu, IconButton } from '@material-ui/core';
 
 import useStyles from './styles';
@@ -8,7 +9,7 @@ import * as prodCat from '../../constants/productCategories';
 
 const categories = [prodCat.ALL_PRODUCTS, prodCat.SPORT, prodCat.TECHNOLOGY, prodCat.CLOTHES];
 
-function Navbar({ setRegistering }) {    
+function Navbar({ setRegistering, user, setUser }) {    
     const [currentCategory, setCurrentCategory] = useState('');
     const [anchorEl, setAnchorEl] = useState(null);
     const classes = useStyles();
@@ -42,6 +43,18 @@ function Navbar({ setRegistering }) {
         router.push('/auth');
     }
 
+    const handleLogoutClick = () => {
+        swal({ 
+            title: "Logout", 
+            text: "Are you sure you want to logout?", 
+            icon: "info", 
+            buttons: ["Cancel", "Continue"] 
+        }).then(accepted => {
+            if(accepted) setUser(null);
+        });
+        handleCloseMenu();
+    }
+
     return (
         <AppBar className={classes.appBar} position="static" >
             <IconButton color="inherit" onClick={handleHomeClick}>
@@ -60,8 +73,9 @@ function Navbar({ setRegistering }) {
                 <Avatar  className={classes.avatar} /> 
             </IconButton>
             <Menu id="userMenu" keepMounted anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleCloseMenu}>
-                <MenuItem onClick={handleSignInClick}>Sign In</MenuItem>
-                <MenuItem onClick={handleSignUpClick}>Sign Up</MenuItem>
+                { !user && <MenuItem onClick={handleSignInClick}>Sign In</MenuItem>}             
+                { !user && <MenuItem onClick={handleSignUpClick}>Sign Up</MenuItem>} 
+                { user && <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>}         
             </Menu>
         </AppBar>
     )
