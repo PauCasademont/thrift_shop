@@ -18,7 +18,7 @@ function Home() {
             {!products ? <CircularProgress /> : (
                 <Grid className={classes.container} container spacing={6} >
                     {products.map((product) => (
-                        <Grid item xs={3} >
+                        <Grid item key={product._id} xs={3} >
                             <ProductCard title={product.title} price={product.price} image={product.image}/>             
                         </Grid>
                     ))}                
