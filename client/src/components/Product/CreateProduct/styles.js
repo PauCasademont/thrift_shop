@@ -12,6 +12,9 @@ export default makeStyles((theme) => ({
         height: '30px',
         fontSize: '18px'
     },
+    form_control: {
+        width: '60%'
+    },
     file_base: {
         marginTop: theme.spacing(4)        
     }   

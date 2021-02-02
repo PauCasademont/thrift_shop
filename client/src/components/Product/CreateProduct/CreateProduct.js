@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
-import { Container, Paper, Grid, TextField, Button } from '@material-ui/core';
+import { Container, Paper, Grid, TextField, Button, FormControl, InputLabel, Select, MenuItem } from '@material-ui/core';
 import FileBase from 'react-file-base64';
 import { useHistory } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
 
 import { uploadProduct } from '../../../actions/product';
 import useStyles from './styles';
+import * as prodCat from '../../../constants/productCategories';
 
-const initialState = { title: '', description: '', price: 0, image: ''}
+
+const initialState = { title: '', description: '', price: 0, category: '', image: ''}
+const categories = [prodCat.ALL_PRODUCTS, prodCat.SPORT, prodCat.TECHNOLOGY, prodCat.CLOTHES];
 
 function CreateProduct({ user }) {
     const [form, setForm] = useState(initialState);
@@ -66,6 +69,16 @@ function CreateProduct({ user }) {
                                 decimalScale={2}
                                 fixedDecimalScale={true}
                             />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <FormControl className={classes.form_control}>
+                                <InputLabel id="selectInputLabel">Category</InputLabel>
+                                <Select labelId="selectInputLabel" name="category" value={form.category} onChange={handleChange}>
+                                    {categories.map((category, index) => (
+                                        <MenuItem key={index} value={category}>{category}</MenuItem>
+                                    ))} 
+                                </Select>
+                            </FormControl>
                         </Grid>
                     </Grid>
                     <Grid container spacing={5} direction="column" alignItems="center"  justify="center">
