@@ -24,3 +24,19 @@ export const getProducts = async (req, res) => {
         console.log(error);
     }
 }
+
+export const getUserProducts = async (req, res) => {
+    const { user_id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(user_id)){
+        return res.status(404).json({ message: `No valid user id: ${user_id}`})
+    } 
+
+    try{
+        const products = await ProductModel.find({ owner: user_id});
+        res.status(200).json(products);
+    } catch(error) {
+        res.status(404).json({ message: "Something went wrong"});
+        console.log(error);
+    }
+}

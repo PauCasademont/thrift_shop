@@ -61,6 +61,7 @@ function CreateProduct({ user }) {
                                 className={classes.number_format}
                                 name="price"
                                 value={form.price}
+                                required
                                 onChange={handleChange}
                                 thousandSeparator
                                 suffix=" €"
@@ -71,7 +72,7 @@ function CreateProduct({ user }) {
                             />
                         </Grid>
                         <Grid item xs={12}>
-                            <FormControl className={classes.form_control}>
+                            <FormControl className={classes.form_control} required>
                                 <InputLabel id="selectInputLabel">Category</InputLabel>
                                 <Select labelId="selectInputLabel" name="category" value={form.category} onChange={handleChange}>
                                     {categories.map((category, index) => (
