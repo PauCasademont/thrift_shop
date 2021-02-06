@@ -7,6 +7,7 @@ import Auth from './components/Auth/Auth';
 import NavBar from './components/Navbar/Navbar';
 import CreateProduct from './components/product/CreateProduct/CreateProduct';
 import UserProducts from './components/product/UserProducts/UserProducts';
+import UpdateProduct from './components/product/UpdateProduct/UpdateProduct';
  
 function App() {
   const [registering, setRegistering] = useState(false);
@@ -36,6 +37,10 @@ function App() {
           <Route
             path="/products/self" exact
             render={() => <UserProducts user={user} /> }
+          />
+          <Route
+            path="/products/update/:id" exact
+            render={() => <UpdateProduct />}
           />
         </Switch>
       </Container>

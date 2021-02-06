@@ -31,6 +31,14 @@ export const getProducts =  async () => {
     }
 }
 
+export const getProduct =  async (id) => {
+    try {
+        return await api.req_getProduct(id);
+    } catch (error){
+        console.log(error);
+    }
+}
+
 export const getUserProducts =  async (userId) => {
     try {
         return await api.req_getUserProducts(userId);

@@ -10,7 +10,8 @@ function Home() {
     const classes = useStyles();
 
     useEffect(() => {
-        getProducts().then((res) => {setProducts(res.data)});     
+        getProducts().then((res) => {setProducts(res.data)})
+                     .catch((error) => {console.log(error)});    
     },[]);
 
     return (

@@ -11,7 +11,8 @@ function UserProducts({ user }) {
 
     useEffect(() => {
         if(user){
-            getUserProducts(user.id).then((res) => {setProducts(res.data)});
+            getUserProducts(user.id).then((res) => {setProducts(res.data)})
+                                     .catch((error) => {console.log(error)});
         }
     },[user]);
 
