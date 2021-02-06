@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Grid, CircularProgress } from '@material-ui/core';
 
 import { getProducts } from '../../actions/product';
-import ProductCard from './ProductCard/ProductCard';
+import ProductCard from '../product/ProductCard/ProductCard';
 import useStyles from './styles';
 
 function Home() {
@@ -18,8 +18,8 @@ function Home() {
             {!products ? <CircularProgress /> : (
                 <Grid className={classes.container} container spacing={6} >
                     {products.map((product) => (
-                        <Grid item key={product._id} xs={3} >
-                            <ProductCard title={product.title} price={product.price} image={product.image}/>             
+                        <Grid item key={product._id} xs={6} sm={4} md={3} >
+                                <ProductCard product={product} home={true} />            
                         </Grid>
                     ))}                
                 </Grid>        

@@ -63,6 +63,11 @@ function Navbar({ setRegistering, user, setUser }) {
         router.push('/upload');
     }
 
+    const handleUserProductsClick = () => {
+        handleCloseMenu();
+        router.push('/products/self')
+    }
+
     return (
         <AppBar className={classes.appBar} position="static" >
             <IconButton color="inherit" onClick={handleHomeClick}>
@@ -84,7 +89,8 @@ function Navbar({ setRegistering, user, setUser }) {
                 { !user && <MenuItem onClick={handleSignInClick}>Sign In</MenuItem>}             
                 { !user && <MenuItem onClick={handleSignUpClick}>Sign Up</MenuItem>} 
                 { user && <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>}   
-                { user && <MenuItem onClick={handleAddProductClick}>Add Product</MenuItem>}      
+                { user && <MenuItem onClick={handleAddProductClick}>Add Product</MenuItem>}
+                { user && <MenuItem onClick={handleUserProductsClick}>Products</MenuItem>}
             </Menu>
         </AppBar>
     )

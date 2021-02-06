@@ -30,3 +30,11 @@ export const getProducts =  async () => {
         console.log(error);
     }
 }
+
+export const getUserProducts =  async (userId) => {
+    try {
+        return await api.req_getUserProducts(userId);
+    } catch (error){
+        console.log(error);
+    }
+}
